@@ -12,7 +12,6 @@
             }
 
             container = container || options.container;
-            debugger
             var elmSource = this;
             var line = container.line().attr("marker-end", "url(#triangle)");
             var markers = options.markers;
