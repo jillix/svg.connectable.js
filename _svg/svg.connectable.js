@@ -2,6 +2,7 @@
 
     var isInited = false;
     var marker = null;
+    var container = null;
     SVG.extend(SVG.Element, {
         connectable: function(options, elmTarget) {
 
@@ -10,8 +11,10 @@
                 options = {};
             }
 
+            container = container || options.container;
+            debugger
             var elmSource = this;
-            var line = options.container.line().attr("marker-end", "url(#triangle)");
+            var line = container.line().attr("marker-end", "url(#triangle)");
             var markers = options.markers;
 
             // Source and target positions
@@ -31,7 +34,7 @@
                 var dx = x2 - x1;
                 var dy = y2 - y1;
 
-                if (Math.abs(dy) < 150) {
+                if (Math.abs(dy) < 200) {
                     if (dx < 0) {
                         x1 -= 25;
                         x2 += 30;
@@ -82,7 +85,11 @@
             elmSource.dragmove = updateLine;
             elmTarget.dragmove = updateLine;
 
-            return elmSource;
+            return {
+                source: elmSource,
+                target: elmTarget,
+                line: line
+            };
         }
     });
 }).call(this);
