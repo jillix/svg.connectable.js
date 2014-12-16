@@ -28,12 +28,25 @@
                 var x2 = tPos.x;
                 var y2 = tPos.y;
 
-                if (x2 > x1) {
-                    x2 -= 30;
-                    x1 += 25;
+                var dx = x2 - x1;
+                var dy = y2 - y1;
+
+                if (Math.abs(dy) < 150) {
+                    if (dx < 0) {
+                        x1 -= 25;
+                        x2 += 30;
+                    } else {
+                        x2 -= 30;
+                        x1 += 25;
+                    }
                 } else {
-                    x1 -= 25;
-                    x2 += 30;
+                    if (dy < 0) {
+                        y1 -= 25;
+                        y2 += 30;
+                    } else {
+                        y2 -= 30;
+                        y1 += 25;
+                    }
                 }
 
                 line.attr({
