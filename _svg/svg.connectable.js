@@ -1,8 +1,8 @@
 ;(function() {
 
-    var isInited = false;
-    var marker = null;
     var container = null;
+    var markers = null;
+
     SVG.extend(SVG.Element, {
         connectable: function(options, elmTarget) {
 
@@ -13,8 +13,25 @@
 
             container = container || options.container;
             var elmSource = this;
-            var line = container.line().attr("marker-end", "url(#triangle)");
-            var markers = options.markers;
+            markers = markers || options.markers;
+
+            var marker = markers.marker(10, 10);
+            var markerId = "triangle-" + Math.random().toString(16);
+            var line = container.line().attr("marker-end", "url(#" + markerId + ")");
+
+            marker.attr({
+                id: markerId,
+                viewBox: "0 0 10 10",
+                refX: "0",
+                refY: "5",
+                markerUnits: "strokeWidth",
+                markerWidth: "4",
+                markerHeight: "5"
+            });
+
+            marker.path().attr({
+                d: "M 0 0 L 10 5 L 0 10 z"
+            });
 
             // Source and target positions
             var sPos = {};
@@ -59,26 +76,6 @@
                 });
             }
 
-            if (isInited === false) {
-                marker = markers.marker(10, 10);
-                marker.attr({
-                    id: "triangle",
-                    viewBox: "0 0 10 10",
-                    refX: "0",
-                    refY: "5",
-                    markerUnits: "strokeWidth",
-                    markerWidth: "4",
-                    markerHeight: "5"
-                });
-
-                marker.path().attr({
-                    d: "M 0 0 L 10 5 L 0 10 z"
-                });
-
-                isInited = true;
-            }
-
-
             updateLine();
 
             elmSource.dragmove = updateLine;
@@ -87,7 +84,8 @@
             return {
                 source: elmSource,
                 target: elmTarget,
-                line: line
+                line: line,
+                marker: marker
             };
         }
     });
