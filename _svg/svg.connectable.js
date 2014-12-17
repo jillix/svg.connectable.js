@@ -46,8 +46,26 @@
 
             con.computeLineCoordinates = function (con) {
 
-                sPos = con.source.transform();
-                tPos = con.target.transform();
+                var sPos = con.source.transform();
+                var tPos = con.target.transform();
+
+                var x1 = sPos.x;
+                var y1 = sPos.y;
+                var x2 = tPos.x;
+                var y2 = tPos.y;
+
+                return {
+                    x1: x1,
+                    y1: y1,
+                    x2: x2,
+                    y2: y2
+                };
+            };
+
+            con.computeLineCoordinates = function (con) {
+
+                var sPos = con.source.transform();
+                var tPos = con.target.transform();
 
                 var x1 = sPos.x;
                 var y1 = sPos.y;
