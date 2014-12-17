@@ -13,9 +13,9 @@
                 options = {};
             }
 
-            container = container || options.container;
+            container = options.container || container;
             var elmSource = this;
-            markers = markers || options.markers;
+            markers = options.markers || markers;
 
             var marker = markers.marker(10, 10);
             var markerId = "triangle-" + Math.random().toString(16);
@@ -62,44 +62,6 @@
                 };
             };
 
-            con.computeLineCoordinates = function (con) {
-
-                var sPos = con.source.transform();
-                var tPos = con.target.transform();
-
-                var x1 = sPos.x;
-                var y1 = sPos.y;
-                var x2 = tPos.x;
-                var y2 = tPos.y;
-
-                var dx = x2 - x1;
-                var dy = y2 - y1;
-
-                if (Math.abs(dy) < 200) {
-                    if (dx < 0) {
-                        x1 -= 25;
-                        x2 += 30;
-                    } else {
-                        x2 -= 30;
-                        x1 += 25;
-                    }
-                } else {
-                    if (dy < 0) {
-                        y1 -= 25;
-                        y2 += 30;
-                    } else {
-                        y2 -= 30;
-                        y1 += 25;
-                    }
-                }
-
-                return {
-                    x1: x1,
-                    y1: y1,
-                    x2: x2,
-                    y2: y2
-                };
-            }
 
             function updateLine() {
                 line.attr(con.computeLineCoordinates(con));
@@ -109,6 +71,7 @@
 
             elmSource.dragmove = updateLine;
             elmTarget.dragmove = updateLine;
+            con.update = updateLine;
             return con;
         }
     });
