@@ -6,6 +6,8 @@
     SVG.extend(SVG.Element, {
         connectable: function(options, elmTarget) {
 
+            var con = {};
+
             if (elmTarget === undefined) {
                 elmTarget = options;
                 options = {};
@@ -37,10 +39,15 @@
             var sPos = {};
             var tPos = {};
 
-            function updateLine() {
+            con.source = elmSource;
+            con.target = elmTarget;
+            con.line = line;
+            con.marker = marker;
 
-                sPos = elmSource.transform();
-                tPos = elmTarget.transform();
+            con.computeLineCoordinates = function (con) {
+
+                sPos = con.source.transform();
+                tPos = con.target.transform();
 
                 var x1 = sPos.x;
                 var y1 = sPos.y;
@@ -68,25 +75,23 @@
                     }
                 }
 
-                line.attr({
+                return {
                     x1: x1,
                     y1: y1,
                     x2: x2,
                     y2: y2
-                });
+                };
+            }
+
+            function updateLine() {
+                line.attr(con.computeLineCoordinates(con));
             }
 
             updateLine();
 
             elmSource.dragmove = updateLine;
             elmTarget.dragmove = updateLine;
-
-            return {
-                source: elmSource,
-                target: elmTarget,
-                line: line,
-                marker: marker
-            };
+            return con;
         }
     });
 }).call(this);
