@@ -71,7 +71,17 @@
 
             elmSource.dragmove = updateLine;
             elmTarget.dragmove = updateLine;
+
+            elmSource.cons = elmSource.cons || [];
+            elmSource.cons.push(con);
+
             con.update = updateLine;
+
+            con.setLineColor = function (color, c) {
+                c = c || this;
+                c.line.stroke(color);
+                c.marker.fill(color);
+            };
             return con;
         }
     });
