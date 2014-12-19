@@ -69,8 +69,8 @@
 
             updateLine();
 
-            elmSource.dragmove = updateLine;
-            elmTarget.dragmove = updateLine;
+            elmSource.on("dragmove", updateLine);
+            elmTarget.on("dragmove", updateLine);
 
             elmSource.cons = elmSource.cons || [];
             elmSource.cons.push(con);
