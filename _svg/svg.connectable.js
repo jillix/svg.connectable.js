@@ -12,6 +12,28 @@
     var container = null;
     var markers = null;
 
+    /**
+     * connectable
+     * Connects two elements.
+     *
+     * @name connectable
+     * @function
+     * @param {Object} options An object containing the following fields:
+     *
+     *  - `container` (SVGElement): The line elements container.
+     *  - `markers` (SVGElement): The marker elements container.
+     *
+     * @param {SVGElement} elmTarget The target SVG element.
+     * @return {Object} The connectable object containing:
+     *
+     *  - `source` (SVGElement): The source element.
+     *  - `target` (SVGElement): The target element.
+     *  - `line` (SVGElement): The line element.
+     *  - `marker` (SVGElement): The marker element.
+     *  - [`computeLineCoordinates` (Function)](#concomputeLineCoordinatescon)
+     *  - [`update` (Function)](#update)
+     *  - [`setLineColor` (Function)](#setlinecolorcolor-c)
+     */
     function connectable(options, elmTarget) {
 
         var con = {};
@@ -47,11 +69,22 @@
         var sPos = {};
         var tPos = {};
 
+        // Append the SVG elements
         con.source = elmSource;
         con.target = elmTarget;
         con.line = line;
         con.marker = marker;
 
+        /**
+         * computeLineCoordinates
+         * The function that computes the new coordinates.
+         * It can be overriden with a custom function.
+         *
+         * @name computeLineCoordinates
+         * @function
+         * @param {Connectable} con The connectable instance.
+         * @return {Object} An object containing the following fields:
+         */
         con.computeLineCoordinates = function (con) {
 
             var sPos = con.source.transform();
@@ -70,26 +103,40 @@
             };
         };
 
-
-        function updateLine() {
-            line.attr(con.computeLineCoordinates(con));
-        }
-
-        updateLine();
-
-        elmSource.on("dragmove", updateLine);
-        elmTarget.on("dragmove", updateLine);
-
         elmSource.cons = elmSource.cons || [];
         elmSource.cons.push(con);
 
-        con.update = updateLine;
+        /**
+         * update
+         * Updates the line coordinates.
+         *
+         * @name update
+         * @function
+         * @return {undefined}
+         */
+        con.update = function () {
+            line.attr(con.computeLineCoordinates(con));
+        };
+        con.update();
+        elmSource.on("dragmove", con.update);
+        elmTarget.on("dragmove", con.update);
 
+        /**
+         * setLineColor
+         * Sets the line color.
+         *
+         * @name setLineColor
+         * @function
+         * @param {String} color The new color.
+         * @param {Connectable} c The connectable instance.
+         * @return {undefined}
+         */
         con.setLineColor = function (color, c) {
             c = c || this;
             c.line.stroke(color);
             c.marker.fill(color);
         };
+
         return con;
     }
 
