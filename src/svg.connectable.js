@@ -2,7 +2,7 @@
  * SVG.js Connectable Plugin
  * =========================
  *
- * For connecting SVG things.
+ * A JavaScript library for connecting SVG things.
  * Created with <3 and JavaScript by the jillix developers.
  *
  * Licensed under the MIT license.
