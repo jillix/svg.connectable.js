@@ -83,7 +83,7 @@
          * @name computeLineCoordinates
          * @function
          * @param {Connectable} con The connectable instance.
-         * @return {Object} An object containing the following fields:
+         * @return {Object} An object containing the `x1`, `x2`, `y1` and `y2` coordinates.
          */
         con.computeLineCoordinates = function (con) {
 
