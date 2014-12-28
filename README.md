@@ -57,7 +57,7 @@ Connects two elements.
  - `target` (SVGElement): The target element.
  - `line` (SVGElement): The line element.
  - `marker` (SVGElement): The marker element.
- - [`computeLineCoordinates` (Function)](#concomputeLineCoordinatescon)
+ - [`computeLineCoordinates` (Function)](#computelinecoordinatescon)
  - [`update` (Function)](#update)
  - [`setLineColor` (Function)](#setlinecolorcolor-c)
 
