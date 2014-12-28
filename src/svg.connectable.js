@@ -87,13 +87,13 @@
          */
         con.computeLineCoordinates = function (con) {
 
-            var sPos = con.source.transform();
-            var tPos = con.target.transform();
+            var sPos = con.source.bbox();
+            var tPos = con.target.bbox();
 
-            var x1 = sPos.x;
-            var y1 = sPos.y;
-            var x2 = tPos.x;
-            var y2 = tPos.y;
+            var x1 = sPos.x + sPos.width / 2;
+            var y1 = sPos.y + sPos.height / 2;
+            var x2 = tPos.x + tPos.width / 2;
+            var y2 = tPos.y + tPos.height / 2;
 
             return {
                 x1: x1,
@@ -102,6 +102,51 @@
                 y2: y2
             };
         };
+
+        if (options.padEllipse) {
+            con.computeLineCoordinates = function (con) {
+                var sPos = con.source.transform();
+                var tPos = con.target.transform();
+
+                // Get ellipse radiuses
+                var xR1 = parseFloat($("ellipse", con.source.node)[0].getAttribute("rx"));
+                var yR1 = parseFloat($("ellipse", con.source.node)[0].getAttribute("ry"));
+
+                var xR2 = parseFloat($("ellipse", con.target.node)[0].getAttribute("rx"));
+                var yR2 = parseFloat($("ellipse", con.target.node)[0].getAttribute("ry"));
+
+                // Get centers
+                var sx = sPos.x + xR1 / 2;
+                var sy = sPos.y + yR1 / 2;
+
+                var tx = tPos.x + xR2 / 2;
+                var ty = tPos.y + yR2 / 2;
+
+                // Calculate distance from source center to target center
+                var dx = tx - sx;
+                var dy = ty - sy;
+                var d = Math.sqrt(dx * dx + dy * dy);
+
+                // Construct unit vector between centers
+                var ux = dx / d;
+                var uy = dy / d;
+
+                // Point on source circle
+                var x1 = sx + xR1 * ux;
+                var y1 = sy + yR1 * uy;
+
+                // Point on target circle
+                var x2 = sx + (d - xR2 - 5) * ux;
+                var y2 = sy + (d - yR2 - 5) * uy;
+
+                return {
+                    x1: x1 + xR1 / 2,
+                    y1: y1 + yR1 / 2,
+                    x2: x2 + xR2 / 2,
+                    y2: y2 + yR2 / 2
+                };
+            };
+        }
 
         elmSource.cons = elmSource.cons || [];
         elmSource.cons.push(con);
