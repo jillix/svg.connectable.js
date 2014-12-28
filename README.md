@@ -2,6 +2,8 @@ svg.connectable.js
 ==================
 A JavaScript library for connecting SVG things.
 
+[![](http://i.imgur.com/VPZjM3v.png)](http://jillix.github.io/svg.connectable.js/)
+
 ## Usage
 
 This library depends on:
