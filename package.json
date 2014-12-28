@@ -1,6 +1,6 @@
 {
   "name": "svg.connectable.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A JavaScript library for connecting SVG things.",
   "main": "src/svg.connectable.js",
   "scripts": {

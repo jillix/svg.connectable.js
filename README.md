@@ -57,6 +57,7 @@ Connects two elements.
  - `target` (SVGElement): The target element.
  - `line` (SVGElement): The line element.
  - `marker` (SVGElement): The marker element.
+ - `padEllipe` (Boolean): If `true`, the line coordinates will be placed with a padding.
  - [`computeLineCoordinates` (Function)](#computelinecoordinatescon)
  - [`update` (Function)](#update)
  - [`setLineColor` (Function)](#setlinecolorcolor-c)
