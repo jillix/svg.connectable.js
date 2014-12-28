@@ -5,6 +5,7 @@
  * A JavaScript library for connecting SVG things.
  * Created with <3 and JavaScript by the jillix developers.
  *
+ * svg.connectable.js 1.0.0
  * Licensed under the MIT license.
  * */
 ;(function() {
