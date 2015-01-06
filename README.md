@@ -9,7 +9,7 @@ A JavaScript library for connecting SVG things.
 This library depends on:
 
  - [SVG.js](https://github.com/wout/svg.js)
- - [svg.draggable.js](https://github.com/jillix/svg.draggable.js)
+ - [svg.draggable.js](https://github.com/jillix/svg.draggable.js) (note this is the @jillix fork of the original *svg.draggable.js* project)
 
 ```html
 <script src="path/to/svg.js"></script>
