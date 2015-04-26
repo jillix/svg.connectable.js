@@ -111,12 +111,12 @@
                 var tPos = con.target.transform();
 
                 // Get ellipse radiuses
-                var xR1 = parseFloat($("ellipse", con.source.node)[0].getAttribute("rx"));
-                var yR1 = parseFloat($("ellipse", con.source.node)[0].getAttribute("ry"));
+                var xR1 = parseFloat(con.source.node.querySelector("ellipse").getAttribute("rx"));
+                var yR1 = parseFloat(con.source.node.querySelector("ellipse").getAttribute("ry"));
 
-                var xR2 = parseFloat($("ellipse", con.target.node)[0].getAttribute("rx"));
-                var yR2 = parseFloat($("ellipse", con.target.node)[0].getAttribute("ry"));
-
+                var xR2 = parseFloat(con.source.node.querySelector("ellipse").getAttribute("rx"));
+                var yR2 = parseFloat(con.source.node.querySelector("ellipse").getAttribute("ry"));
+                
                 // Get centers
                 var sx = sPos.x + xR1 / 2;
                 var sy = sPos.y + yR1 / 2;
