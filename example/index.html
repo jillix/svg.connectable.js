@@ -52,8 +52,9 @@
                         <pre>&lt;script src=&quot;path/to/svg.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;path/to/svg.draggable.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;path/to/svg.connectable.js&quot;&gt;&lt;/script&gt;
+&lt;script class=&quot;graph&quot;&gt;&lt;/div&gt;
 &lt;script&gt;
-    var svg = new SVG($(&quot;.graph&quot;).get(0)).size(&quot;100%&quot;, 900);
+    var svg = new SVG(document.querySelector(&quot;.graph&quot;)).size(&quot;100%&quot;, 500);
     var links = svg.group();
     var markers = svg.group();
     var nodes = svg.group();

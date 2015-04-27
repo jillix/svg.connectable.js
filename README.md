@@ -4,6 +4,13 @@ A JavaScript library for connecting SVG things.
 
 [![](http://i.imgur.com/VPZjM3v.png)](http://jillix.github.io/svg.connectable.js/)
 
+## CDN
+The library is available on [CDNJS](https://cdnjs.com/libraries/svg.connectable.js) as well. To use it, just do:
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.connectable.js/1.1.0/svg.connectable.min.js"></script>
+```
+
 ## Usage
 
 This library depends on:
@@ -15,8 +22,12 @@ This library depends on:
 <script src="path/to/svg.js"></script>
 <script src="path/to/svg.draggable.js"></script>
 <script src="path/to/svg.connectable.js"></script>
+<!-- Or from CDN
+<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.connectable.js/1.1.0/svg.connectable.min.js"></script>
+-->
+<div class="graph"></div>
 <script>
-    var svg = new SVG($(".graph").get(0)).size("100%", 900);
+    var svg = new SVG(document.querySelector(".graph")).size("100%", 500);
     var links = svg.group();
     var markers = svg.group();
     var nodes = svg.group();
