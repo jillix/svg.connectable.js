@@ -20,10 +20,6 @@
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
 
-
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
-
         <!-- svg.js -->
         <script src="js/svg.js"></script>
         <script src="js/svg.draggable.js"></script>
@@ -56,8 +52,9 @@
                         <pre>&lt;script src=&quot;path/to/svg.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;path/to/svg.draggable.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;path/to/svg.connectable.js&quot;&gt;&lt;/script&gt;
+&lt;script class=&quot;graph&quot;&gt;&lt;/div&gt;
 &lt;script&gt;
-    var svg = new SVG($(&quot;.graph&quot;).get(0)).size(&quot;100%&quot;, 900);
+    var svg = new SVG(document.querySelector(&quot;.graph&quot;)).size(&quot;100%&quot;, 500);
     var links = svg.group();
     var markers = svg.group();
     var nodes = svg.group();
@@ -86,7 +83,7 @@
                     </div>
                 </div>
                 <script>
-                    hljs.highlightBlock($("pre").get(0));
+                    hljs.highlightBlock(document.querySelector("pre"));
                 </script>
                 <a class="btn btn-lg btn-danger btn-block" href="https://github.com/jillix/svg.connectable.js/">Check out the documentation on GitHub.</a>
             </div>

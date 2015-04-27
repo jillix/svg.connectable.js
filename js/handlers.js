@@ -1,5 +1,5 @@
-$(document).ready(function () {
-    var svg = new SVG($(".graph").get(0)).size("100%", 500);
+window.addEventListener("load", function () {
+    var svg = new SVG(document.querySelector(".graph")).size("100%", 500);
     var links = svg.group();
     var markers = svg.group();
     var nodes = svg.group();
