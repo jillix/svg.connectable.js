@@ -1,11 +1,15 @@
 {
   "name": "svg.connectable.js",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A JavaScript library for connecting SVG things.",
   "main": "src/svg.connectable.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "contributors": [
+    "Ionică Bizău <bizauionica@gmail.com>",
+    "https://github.com/eperry"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jillix/svg.connectable.js.git"
@@ -20,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/jillix/svg.connectable.js/issues"
   },
-  "homepage": "https://github.com/jillix/svg.connectable.js"
+  "homepage": "https://github.com/jillix/svg.connectable.js",
+  "directories": {
+    "example": "example"
+  }
 }
