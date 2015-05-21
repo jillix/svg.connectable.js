@@ -4,7 +4,9 @@
   "description": "A JavaScript library for connecting SVG things.",
   "main": "src/svg.connectable.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update-min": "cp src/svg.connectable.min.js example/js/svg.connectable.js && git add example && git commit -m 'Updated svg.connectable.js in the example dir' .",
+    "deploy": "cp -r example ../_tmp && git checkout gh-pages && cp -r ../_tmp/* . && git add . -A && git commit -m 'Rebuild.' && rm -rf ../_tmp ../_tmp.js"
   },
   "contributors": [
     "Ionică Bizău <bizauionica@gmail.com>",
