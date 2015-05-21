@@ -1,47 +1,24 @@
 window.addEventListener("load", function () {
     var svg = new SVG(document.querySelector(".graph")).size("100%", 500);
+    var links = svg.group();
+    var markers = svg.group();
+    var nodes = svg.group();
 
-    // Plain draggy
-    svg.rect(70, 100)
-       .center(70, 90)
-       .fill("#388E3C")
-       .draggy()
-       ;
+    var g1 = nodes.group().translate(300, 100).draggy();
+    g1.circle(80).fill("#C2185B");
 
-    // Grouped draggy
-    var group = svg.group().draggy();
-    group.rect(100, 100).center(180, 90).fill("#4CAF50");
-    group.rect(100, 100).center(180, 200).fill("#C8E6C9");
+    var g2 = nodes.group().translate(100, 100).draggy();
+    g2.circle(50).fill("#E91E63");
 
-    // Constraind with object
-    var elm = svg.rect(100,100).fill("#8BC34A").center(290, 90).draggy({
-        minX: 200
-      , minY: 50
-      , maxX: 600
-      , maxY: 200
-    });
+    var g3 = nodes.group().translate(200, 300).draggy();
+    g3.circle(100).fill("#FF5252");
 
-    var s = null
-      , t = null
-      ;
+    g1.connectable({
+        container: links,
+        markers: markers
+    }, g2).setLineColor("#5D4037");
 
-    elm.on("dragstart", function() {
-      s = elm.clone().opacity(0.2);
-    });
-
-    elm.on("dragmove", function() {
-      s.animate(200, '>').move(elm.x(), elm.y());
-    });
-
-    elm.on("dragend", function() {
-      s.remove();
-    });
-
-    // Constraind with function
-    svg.rect(100,100).fill("#009688").center(70, 220).draggy(function(x, y) {
-        return {
-            x: x < 400
-          , y: y < 300
-        };
-    });
+    g2.connectable({
+        padEllipse: true
+    }, g3).setLineColor("#5D4037")
 });
