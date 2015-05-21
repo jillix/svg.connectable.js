@@ -4,13 +4,13 @@ window.addEventListener("load", function () {
     var markers = svg.group();
     var nodes = svg.group();
 
-    var g1 = nodes.group().translate(300, 100).draggable();
+    var g1 = nodes.group().translate(300, 100).draggy();
     g1.circle(80).fill("#C2185B");
 
-    var g2 = nodes.group().translate(100, 100).draggable();
+    var g2 = nodes.group().translate(100, 100).draggy();
     g2.circle(50).fill("#E91E63");
 
-    var g3 = nodes.group().translate(200, 300).draggable();
+    var g3 = nodes.group().translate(200, 300).draggy();
     g3.circle(100).fill("#FF5252");
 
     g1.connectable({

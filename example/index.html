@@ -22,7 +22,7 @@
 
         <!-- svg.js -->
         <script src="js/svg.js"></script>
-        <script src="js/svg.draggable.js"></script>
+        <script src="js/svg.draggy.js"></script>
         <script src="../src/svg.connectable.js"></script>
 
         <script src="js/handlers.js"></script>
@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <pre>&lt;script src=&quot;path/to/svg.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;path/to/svg.draggable.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;path/to/svg.draggy.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;path/to/svg.connectable.js&quot;&gt;&lt;/script&gt;
 &lt;script class=&quot;graph&quot;&gt;&lt;/div&gt;
 &lt;script&gt;
@@ -59,13 +59,13 @@
     var markers = svg.group();
     var nodes = svg.group();
 
-    var g1 = nodes.group().translate(300, 200).draggable();
+    var g1 = nodes.group().translate(300, 200).draggy();
     g1.circle(80).fill(&quot;#C2185B&quot;);
 
-    var g2 = nodes.group().translate(100, 200).draggable();
+    var g2 = nodes.group().translate(100, 200).draggy();
     g2.circle(50).fill(&quot;#E91E63&quot;);
 
-    var g3 = nodes.group().translate(200, 400).draggable();
+    var g3 = nodes.group().translate(200, 400).draggy();
     g3.circle(100).fill(&quot;#FF5252&quot;);
 
     g1.connectable({
