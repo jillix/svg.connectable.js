@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Inconsolata:700);
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:700);
 
 .title {
     font-family: 'Inconsolata', monospace;
@@ -11,7 +11,7 @@ header {
 
 header, footer {
     color: white;
-    background: #8BC34A;
+    background: #e91e63;
     background-image: url("background.png");
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.51);
 }

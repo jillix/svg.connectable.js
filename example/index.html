@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>svg.connectable.js</title>
+        <!-- Mobile support -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Twitter Bootstrap -->
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Material Design for Bootstrap -->
+        <link href="css/material-wfont.min.css" rel="stylesheet">
+        <link href="css/ripples.min.css" rel="stylesheet">
+        <link href="css/custom.css" rel="stylesheet">
+
+        <!-- Font Awesome -->
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+
+        <!-- svg.js -->
+        <script src="js/svg.js"></script>
+        <script src="js/svg.draggable.js"></script>
+        <script src="js/svg.connectable.js"></script>
+
+        <script src="js/handlers.js"></script>
+    </head>
+    <body>
+        <a href="https://github.com/jillix/svg.connectable.js"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+        <header>
+            <div class="container text-left">
+                <h1 class="title">svg.connectable.js <span class="version"></span></h1>
+                <p>A JavaScript library for connecting SVG things.</p>
+                <a class="btn btn-danger" href="https://github.com/jillix/svg.connectable.js/zipball/master">
+                    <i class="fa fa-cloud-download"></i> Download .zip
+                </a>
+                <a class="btn btn-danger" href="https://github.com/jillix/svg.connectable.js/tarball/master">
+                    <i class="fa fa-file-archive-o"></i> Download .tar.gz
+                </a>
+                <a class="btn btn-danger" href="https://github.com/jillix/svg.connectable.js/">
+                    <i class="fa fa-github"></i> View on GitHub
+                </a>
+            </div>
+        </header>
+        <article>
+            <div class="container">
+                <h2>Demo</h2>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <pre>&lt;script src=&quot;path/to/svg.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;path/to/svg.draggable.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;path/to/svg.connectable.js&quot;&gt;&lt;/script&gt;
+&lt;script class=&quot;graph&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    var svg = new SVG(document.querySelector(&quot;.graph&quot;)).size(&quot;100%&quot;, 500);
+    var links = svg.group();
+    var markers = svg.group();
+    var nodes = svg.group();
+
+    var g1 = nodes.group().translate(300, 200).draggable();
+    g1.circle(80).fill(&quot;#C2185B&quot;);
+
+    var g2 = nodes.group().translate(100, 200).draggable();
+    g2.circle(50).fill(&quot;#E91E63&quot;);
+
+    var g3 = nodes.group().translate(200, 400).draggable();
+    g3.circle(100).fill(&quot;#FF5252&quot;);
+
+    g1.connectable({
+        container: links,
+        markers: markers
+    }, g2).setLineColor(&quot;#5D4037&quot;);
+
+    g2.connectable({
+        padEllipse: true
+    }, g3).setLineColor(&quot;#5D4037&quot;)
+&lt;/script&gt;</pre>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="graph"></div>
+                    </div>
+                </div>
+                <script>
+                    hljs.highlightBlock(document.querySelector("pre"));
+                </script>
+                <a class="btn btn-lg btn-danger btn-block" href="https://github.com/jillix/svg.connectable.js/">Check out the documentation on GitHub.</a>
+            </div>
+        </article>
+        <footer>
+            <div class="container">
+                <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> and JavaScript by the <strong><a href="http://github.com/jillix">@jillix</a></strong> developers.
+            </div>
+        </footer>
+    </body>
+</html>
