@@ -110,12 +110,21 @@
                 var sPos = con.source.transform();
                 var tPos = con.target.transform();
 
-                // Get ellipse radiuses
-                var xR1 = parseFloat(con.source.node.querySelector("ellipse").getAttribute("rx"));
-                var yR1 = parseFloat(con.source.node.querySelector("ellipse").getAttribute("ry"));
+                var elmS = con.source.node.querySelector("ellipse") || con.source.node.querySelector("circle");
+                var elmT = con.target.node.querySelector("ellipse") || con.target.node.querySelector("circle");
 
-                var xR2 = parseFloat(con.target.node.querySelector("ellipse").getAttribute("rx"));
-                var yR2 = parseFloat(con.target.node.querySelector("ellipse").getAttribute("ry"));
+                var xR1, xR2, yR1, yR2;
+
+                if (elmS.tagName === "circle") {
+                    xR1 = yR1 = parseFloat(elmS.getAttribute("r"));
+                    xR2 = yR2 = parseFloat(elmT.getAttribute("r"));
+                } else {
+                    xR1 = parseFloat(elmS.getAttribute("rx"));
+                    yR1 = parseFloat(elmS.getAttribute("ry"));
+
+                    xR2 = parseFloat(elmT.getAttribute("rx"));
+                    yR2 = parseFloat(elmT.getAttribute("ry"));
+                }
 
                 // Get centers
                 var sx = sPos.x + xR1 / 2;
