@@ -92,10 +92,10 @@
             var sPos = con.source.bbox();
             var tPos = con.target.bbox();
 
-            var x1 = sPos.x + sPos.width / 2;
-            var y1 = sPos.y + sPos.height / 2;
-            var x2 = tPos.x + tPos.width / 2;
-            var y2 = tPos.y + tPos.height / 2;
+            var x1 = sPos.x2 + sPos.width / 2;
+            var y1 = sPos.y2 + sPos.height / 2;
+            var x2 = tPos.x2 + tPos.width / 2;
+            var y2 = tPos.y2 + tPos.height / 2;
 
             return {
                 x1: x1,
