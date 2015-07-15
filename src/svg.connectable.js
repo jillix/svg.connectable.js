@@ -89,13 +89,16 @@
          */
         con.computeLineCoordinates = function (con) {
 
-            var sPos = con.source.bbox();
-            var tPos = con.target.bbox();
+            var sT = con.source.transform()
+              , tT = con.target.transform()
+              , sB = con.source.bbox()
+              , tB = con.target.bbox()
+              ;
 
-            var x1 = sPos.x2 + sPos.width / 2;
-            var y1 = sPos.y2 + sPos.height / 2;
-            var x2 = tPos.x2 + tPos.width / 2;
-            var y2 = tPos.y2 + tPos.height / 2;
+            var x1 = sT.x + sB.width / 2;
+            var y1 = sT.y + sB.height / 2;
+            var x2 = tT.x + tB.width / 2;
+            var y2 = tT.y + tB.height / 2;
 
             return {
                 x1: x1,
