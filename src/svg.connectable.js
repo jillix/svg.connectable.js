@@ -10,8 +10,9 @@
  * */
 ;(function() {
 
-    var container = null;
-    var markers = null;
+    var container = null
+      , markers = null
+      ;
 
     /**
      * connectable
@@ -49,9 +50,10 @@
         var elmSource = this;
         markers = options.markers || markers;
 
-        var marker = markers.marker(10, 10);
-        var markerId = "triangle-" + Math.random().toString(16);
-        var line = container.line().attr("marker-end", "url(#" + markerId + ")");
+        var marker = markers.marker(10, 10)
+          , markerId = "triangle-" + Math.random().toString(16)
+          , line = container.line().attr("marker-end", "url(#" + markerId + ")")
+          ;
 
         marker.attr({
             id: markerId,
@@ -68,8 +70,9 @@
         });
 
         // Source and target positions
-        var sPos = {};
-        var tPos = {};
+        var sPos = {}
+          , tPos = {}
+          ;
 
         // Append the SVG elements
         con.source = elmSource;
@@ -93,12 +96,11 @@
               , tT = con.target.transform()
               , sB = con.source.bbox()
               , tB = con.target.bbox()
+              , x1 = sT.x + sB.width / 2
+              , y1 = sT.y + sB.height / 2
+              , x2 = tT.x + tB.width / 2
+              , y2 = tT.y + tB.height / 2
               ;
-
-            var x1 = sT.x + sB.width / 2;
-            var y1 = sT.y + sB.height / 2;
-            var x2 = tT.x + tB.width / 2;
-            var y2 = tT.y + tB.height / 2;
 
             return {
                 x1: x1,
@@ -110,13 +112,13 @@
 
         if (options.padEllipse) {
             con.computeLineCoordinates = function (con) {
-                var sPos = con.source.transform();
-                var tPos = con.target.transform();
+                var sPos = con.source.transform()
+                  , tPos = con.target.transform()
+                  , elmS = con.source.node.querySelector("ellipse") || con.source.node.querySelector("circle")
+                  , elmT = con.target.node.querySelector("ellipse") || con.target.node.querySelector("circle")
+                  , xR1, xR2, yR1, yR2;
+                  ;
 
-                var elmS = con.source.node.querySelector("ellipse") || con.source.node.querySelector("circle");
-                var elmT = con.target.node.querySelector("ellipse") || con.target.node.querySelector("circle");
-
-                var xR1, xR2, yR1, yR2;
 
                 if (elmS.tagName === "circle") {
                     xR1 = yR1 = parseFloat(elmS.getAttribute("r"));
@@ -130,28 +132,28 @@
                 }
 
                 // Get centers
-                var sx = sPos.x + xR1 / 2;
-                var sy = sPos.y + yR1 / 2;
+                var sx = sPos.x + xR1 / 2
+                  , sy = sPos.y + yR1 / 2
+                  , tx = tPos.x + xR2 / 2
+                  , ty = tPos.y + yR2 / 2
 
-                var tx = tPos.x + xR2 / 2;
-                var ty = tPos.y + yR2 / 2;
+                    // Calculate distance from source center to target center
+                  , dx = tx - sx
+                  , dy = ty - sy
+                  , d = Math.sqrt(dx * dx + dy * dy)
 
-                // Calculate distance from source center to target center
-                var dx = tx - sx;
-                var dy = ty - sy;
-                var d = Math.sqrt(dx * dx + dy * dy);
+                    // Construct unit vector between centers
+                  , ux = dx / d
+                  , uy = dy / d
 
-                // Construct unit vector between centers
-                var ux = dx / d;
-                var uy = dy / d;
+                    // Point on source circle
+                  , x1 = sx + xR1 * ux
+                  , y1 = sy + yR1 * uy
 
-                // Point on source circle
-                var x1 = sx + xR1 * ux;
-                var y1 = sy + yR1 * uy;
-
-                // Point on target circle
-                var x2 = sx + (d - xR2 - 5) * ux;
-                var y2 = sy + (d - yR2 - 5) * uy;
+                    // Point on target circle
+                  , x2 = sx + (d - xR2 - 5) * ux
+                  , y2 = sy + (d - yR2 - 5) * uy
+                  ;
 
                 return {
                     x1: x1 + xR1 / 2,
