@@ -52,7 +52,7 @@ function connectable(options, elmTarget) {
 
     var marker = markers.marker(10, 10)
       , markerId = "triangle-" + Id()
-      , line = container.path().attr("marker-end", "url(#" + markerId + ")")
+      , line = container.path().attr("marker-end", "url(#" + markerId + ")").fill("none")
       ;
 
     marker.attr({
