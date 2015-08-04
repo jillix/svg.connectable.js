@@ -10,7 +10,8 @@
   },
   "contributors": [
     "Ionică Bizău <bizauionica@gmail.com>",
-    "https://github.com/eperry"
+    "https://github.com/eperry",
+    "@squeamish-ossifrage (https://github.com/squeamish-ossifrage)"
   ],
   "repository": {
     "type": "git",
