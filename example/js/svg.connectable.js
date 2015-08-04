@@ -143,14 +143,12 @@ function connectable(options, elmTarget) {
                 }
               ;
 
-            for (; i < l; ++i) {
-                if (i !== (l - 1) / 2) {
-                    dd = Math.sqrt(dx * dx + dy * dy);
-                    out.ex = cx + dy / dd * options.k * (i - (l - 1) / 2);
-                    out.ey = cy - dx / dd * options.k * (i - (l - 1) / 2);
-                }
-                output.push(out);
+            if (i !== (l - 1) / 2) {
+                dd = Math.sqrt(dx * dx + dy * dy);
+                out.ex = cx + dy / dd * options.k * (i - (l - 1) / 2);
+                out.ey = cy - dx / dd * options.k * (i - (l - 1) / 2);
             }
+            output.push(out);
         });
 
         return output;
@@ -228,14 +226,13 @@ function connectable(options, elmTarget) {
                     }
                   ;
 
-                for (; i < l; ++i) {
-                    if (i !== (l - 1) / 2) {
-                        dd = Math.sqrt(dx * dx + dy * dy);
-                        out.ex = cx + dy / dd * options.k * (i - (l - 1) / 2);
-                        out.ey = cy - dx / dd * options.k * (i - (l - 1) / 2);
-                    }
-                    output.push(out);
+                if (i !== (l - 1) / 2) {
+                    dd = Math.sqrt(dx * dx + dy * dy);
+                    out.ex = cx + dy / dd * options.k * (i - (l - 1) / 2);
+                    out.ey = cy - dx / dd * options.k * (i - (l - 1) / 2);
                 }
+
+                output.push(out);
             });
 
             return output;
@@ -259,9 +256,11 @@ function connectable(options, elmTarget) {
           ;
 
         IterateObject(results, function (r, i) {
-            cons[i].line.plot([
-                "M", r.x1, r.y1, "Q", r.ex, r.ey, r.x2, r.y2
-            ].join(" "));
+            cons[i].line.plot(
+                "M" + r.x1 + " " + r.y1
+              + " Q" + r.ex + " " + r.ey
+              + " " + r.x2 + " " + r.y2
+            );
         });
     };
 
