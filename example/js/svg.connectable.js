@@ -211,7 +211,10 @@ function connectable(options, elmTarget) {
                   , y1 = cy1 + yR1 / 2
                   , x2 = cx2 + xR2 / 2
                   , y2 = cy2 + yR2 / 2
-                  , cx = (x1 + x2) / 2
+                  ;
+
+
+                var cx = (x1 + x2) / 2
                   , cy = (y1 + y2) / 2
                   , dx = (x1 - x2) / 2
                   , dy = (y1 - y2) / 2
