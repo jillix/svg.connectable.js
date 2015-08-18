@@ -22,7 +22,7 @@ A JavaScript library for connecting SVG things.
 The library is available on [CDNJS](https://cdnjs.com/libraries/svg.connectable.js) as well. To use it, just do:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.connectable.js/1.1.0/svg.connectable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.connectable.js/2.0.0/svg.connectable.min.js"></script>
 ```
 
 ## Usage
@@ -37,7 +37,7 @@ This library depends on:
 <script src="path/to/svg.draggy.js"></script>
 <script src="path/to/svg.connectable.js"></script>
 <!-- Or from CDN
-<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.connectable.js/1.1.0/svg.connectable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.connectable.js/2.0.0/svg.connectable.min.js"></script>
 -->
 <div class="graph"></div>
 <script>
