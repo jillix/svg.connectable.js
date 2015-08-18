@@ -1,6 +1,6 @@
 {
   "name": "svg.connectable.js",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "A JavaScript library for connecting SVG things.",
   "main": "lib/index.js",
   "scripts": {
@@ -28,5 +28,12 @@
   "homepage": "https://github.com/jillix/svg.connectable.js",
   "directories": {
     "example": "example"
-  }
+  },
+  "dependencies": {
+    "deffy": "^2.0.0",
+    "idy": "^1.0.0",
+    "iterate-object": "^1.1.0",
+    "set-or-get": "^1.0.0"
+  },
+  "devDependencies": {}
 }
