@@ -18,7 +18,23 @@ window.addEventListener("load", function () {
         markers: markers
     }, g2).setLineColor("#5D4037");
 
+    // A -> B
+    // A -> B
+    //
+    // A -> B
+    // B -> A
+
+    g2.connectable({
+        container: links,
+        markers: markers
+    }, g1).setLineColor("#5D4037");
+
+
     g2.connectable({
         padEllipse: true
     }, g3).setLineColor("#5D4037")
+
+    g3.connectable({
+        padEllipse: true
+    }, g2).setLineColor("#5D4037")
 });
