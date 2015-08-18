@@ -48,7 +48,10 @@ function connectable(options, elmTarget) {
     container = options.container || container;
     var elmSource = this;
     markers = options.markers || markers;
+
     options.k = options.k || 100;
+    options.kk = options.kk || 10;
+
 
     var marker = markers.marker(10, 10)
       , markerId = "triangle-" + Id()
@@ -130,8 +133,8 @@ function connectable(options, elmTarget) {
               , y2 = tT.y + tB.height / 2
               , cx = (x1 + x2) / 2
               , cy = (y1 + y2) / 2
-              , dx = (x1 - x2) / 2
-              , dy = (y1 - y2) / 2
+              , dx = Math.abs((x1 - x2) / 2)
+              , dy = Math.abs((y1 - y2) / 2)
               , dd = null
               , out = {
                     x1: x1
@@ -211,10 +214,47 @@ function connectable(options, elmTarget) {
                   , y1 = cy1 + yR1 / 2
                   , x2 = cx2 + xR2 / 2
                   , y2 = cy2 + yR2 / 2
-                  , cx = (x1 + x2) / 2
+                // TODO
+                //  , step = (Math.PI / 2 / l) * (i % 2 !== 0 ? 1 : -1)
+                //  , angle = 0
+                  ;
+
+                //if (i !== (l - 1) / 2) {
+                //    angle = step * (i + 1);
+                //}
+
+
+                //var xC1 = (sT.x + xR1)
+                //  , yC1 = (sT.y + yR1)
+                //  , xC2 = (tT.y + xR2)
+                //  , yC2 = (tT.y + yR2)
+                //  , ddx1 = x1 - xC1
+                //  , ddy1 = y1 - yC1
+                //  , ddx2 = x2 - xC2
+                //  , ddy2 = y2 - yC2
+                //  , cosAngle = Math.cos(angle)
+                //  , sinAngle = Math.sin(angle)
+                //  , cosAngleM = Math.cos(-angle)
+                //  , sinAngleM = Math.sin(-angle)
+                //  ;
+
+                // TODO This should change the points to arrange them on the circle
+                //
+                // x1 = ddx1 * cosAngle - ddy1 * sinAngle + xC1;
+                // y1 = ddx1 * sinAngle + ddy1 * cosAngle + yC1;
+
+                // x2 = ddx2 * cosAngleM - ddy2 * sinAngle + xC2;
+                // y2 = ddx2 * sinAngleM + ddy2 * cosAngle + yC2;
+
+                // ===================
+                // x1 = cx1 + ddx1 * Math.cos(angle) - ddy1 * Math.sin(angle)
+                // y1 = cy1 + ddx1 * Math.sin(angle) - ddy1 * Math.cos(angle)
+
+                //x2 = cx2 + ddx2 * Math.cos(angle) - ddy2 * Math.sin(angle) + xR2
+                //y2 = cy2 + ddx2 * Math.sin(angle) - ddy2 * Math.cos(angle) + yR2
+
+                var cx = (x1 + x2) / 2
                   , cy = (y1 + y2) / 2
-                  , dx = (x1 - x2) / 2
-                  , dy = (y1 - y2) / 2
                   , dd = null
                   , out = {
                         x1: x1
@@ -226,10 +266,22 @@ function connectable(options, elmTarget) {
                     }
                   ;
 
-                if (i !== (l - 1) / 2) {
-                    dd = Math.sqrt(dx * dx + dy * dy);
-                    out.ex = cx + dy / dd * options.k * (i - (l - 1) / 2);
-                    out.ey = cy - dx / dd * options.k * (i - (l - 1) / 2);
+                if (isNaN(out.x1)) {
+                    out.x1 = sT.x + xR1 * 2;
+                    out.y1 = sT.y + yR1 / 2
+                    out.x2 = sT.x;
+                    out.y2 = out.y1;
+                    out.ex = (out.x1 + out.x2) / 2;
+                    out.ey = out.y1 - (options.kk * (i + 1));
+                } else {
+                    dx = Math.abs((x1 - x2) / 2);
+                    dy = Math.abs((y1 - y2) / 2);
+
+                    if (i !== (l - 1) / 2) {
+                        dd = Math.sqrt(dx * dx + dy * dy);
+                        out.ex = cx + dy / dd * options.k * (i - (l - 1) / 2);
+                        out.ey = cy - dx / dd * options.k * (i - (l - 1) / 2);
+                    }
                 }
 
                 output.push(out);
