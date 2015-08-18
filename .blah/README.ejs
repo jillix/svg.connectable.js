@@ -13,10 +13,30 @@
 <!-- * * * Thanks! * * *                                                    -->
 <!---------------------------------------------------------------------------->
 
-# svg.connectable.js
-A JavaScript library for connecting SVG things.
 
-[![svg.connectable.js](http://i.imgur.com/VPZjM3v.png)](http://jillix.github.io/svg.pan-zoom.js/)
+<% // Dependencies %>
+<% var IsThere = require("is-there"); %>
+<% var Fs = require("fs"); %>
+<% var Path = require("path"); %>
+<% var Ul = require("ul"); %>
+
+<% // Compute the directory paths %>
+<% var binPath = Path.join(_.path, "bin"); %>
+<% var examplesPath = Path.join(_.path, "examples"); %>
+<% var examplePath = Path.join(_.path, "example"); %>
+<% var example = IsThere(examplePath) ? examplePath : IsThere(examplesPath) ? examplesPath : null; %>
+<% var isCli = IsThere(binPath); %>
+
+<% if (_.pack.blah.h_img) { %>
+![<%- _.pack.name %>](<%- _.pack.blah.h_img %>)
+<% } %>
+
+# <%- _.pack.name %>
+<%- _.pack.description %>
+
+<% if (_.pack.blah.ex_img) { %>
+[![<%- _.pack.name %>](<%-_.pack.blah.ex_img %>)](http://jillix.github.io/svg.pan-zoom.js/)
+<% } %>
 
 ## CDN
 The library is available on [CDNJS](https://cdnjs.com/libraries/svg.connectable.js) as well. To use it, just do:
@@ -66,53 +86,59 @@ This library depends on:
 </script>
 ```
 
+<% // Cli usage %>
+<% if (isCli) { %>
+### CLI Usage
+You can install the package globally and use it as command line tool:
+
+```sh
+$ npm i -g <%- _.pack.name %>
+```
+
+Then, run `<%- _.pack.name %> --help` and see what the cli tool can do.
+
+<% } %>
+
+<% // Show the example if there is one %>
+<% if (example) { %>
+<% var exStrPath = Path.join(example, "index.js"); %>
+<% if (!IsThere(exStrPath)) { %>
+<%   example = null; %>
+<% } %>
+<% if (example) { %>
+## Example
+
+<% if (isCli) { %>
+Here is an example how to use this package as library.
+<% } %>
+
+<% var exStr = Fs.readFileSync(exStrPath, "utf-8"); %>
+<% exStr = exStr.replace("../lib", _.pack.name) %>
+
+```js
+<%- exStr %>
+```
+<% } %>
+<% } %>
+
+<% // Documentation %>
 ## Documentation
 
-### `connectable(options, elmTarget)`
-Connects two elements. If called multiple times, the lines will be curved.
+<% if (isCli) { %>
+For full API reference, see the [DOCUMENTATION.md][docs] file.
+<% } else { %>
+<% docs = docs.split("\n").slice(3).join("\n"); %>
+<%- docs %>
+<% } %>
 
-#### Params
-- **Object** `options`: An object containing the following fields:
- - `container` (SVGElement): The line elements container.
- - `markers` (SVGElement): The marker elements container.
-- **SVGElement** `elmTarget`: The target SVG element.
-
-#### Return
-- **Object** The connectable object containing:
- - `source` (SVGElement): The source element.
- - `target` (SVGElement): The target element.
- - `line` (SVGElement): The line element.
- - `marker` (SVGElement): The marker element.
- - `padEllipe` (Boolean): If `true`, the line coordinates will be placed with a padding.
- - [`computeLineCoordinates` (Function)](#computelinecoordinatescon)
- - [`update` (Function)](#update)
- - [`setLineColor` (Function)](#setlinecolorcolor-c)
-
-### `computeLineCoordinates(con)`
-The function that computes the new coordinates.
-It can be overriden with a custom function.
-
-#### Params
-- **Connectable** `con`: The connectable instance.
-
-#### Return
-- **Object** An object containing the `x1`, `x2`, `y1` and `y2` coordinates.
-
-### `update()`
-Updates the line coordinates.
-
-### `setLineColor(color, c)`
-Sets the line color.
-
-#### Params
-- **String** `color`: The new color.
-- **Connectable** `c`: The connectable instance.
-
+<% // How to contribute %>
 ## How to contribute
 Have an idea? Found a bug? See [how to contribute][contributing].
 
+<% // License information %>
 ## License
 See the [LICENSE](/LICENSE) file.
 
+<% // Links %>
 [contributing]: /CONTRIBUTING.md
 [docs]: /DOCUMENTATION.md

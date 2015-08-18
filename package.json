@@ -35,5 +35,8 @@
     "iterate-object": "^1.1.0",
     "set-or-get": "^1.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "blah": {
+    "ex_img": "http://i.imgur.com/VPZjM3v.png"
+  }
 }
