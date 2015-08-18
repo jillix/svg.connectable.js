@@ -48,7 +48,10 @@ function connectable(options, elmTarget) {
     container = options.container || container;
     var elmSource = this;
     markers = options.markers || markers;
+
     options.k = options.k || 100;
+    options.kk = options.kk || 10;
+
 
     var marker = markers.marker(10, 10)
       , markerId = "triangle-" + Id()
@@ -130,8 +133,8 @@ function connectable(options, elmTarget) {
               , y2 = tT.y + tB.height / 2
               , cx = (x1 + x2) / 2
               , cy = (y1 + y2) / 2
-              , dx = (x1 - x2) / 2
-              , dy = (y1 - y2) / 2
+              , dx = Math.abs((x1 - x2) / 2)
+              , dy = Math.abs((y1 - y2) / 2)
               , dd = null
               , out = {
                     x1: x1
@@ -252,8 +255,6 @@ function connectable(options, elmTarget) {
 
                 var cx = (x1 + x2) / 2
                   , cy = (y1 + y2) / 2
-                  , dx = (x1 - x2) / 2
-                  , dy = (y1 - y2) / 2
                   , dd = null
                   , out = {
                         x1: x1
@@ -265,10 +266,22 @@ function connectable(options, elmTarget) {
                     }
                   ;
 
-                if (i !== (l - 1) / 2) {
-                    dd = Math.sqrt(dx * dx + dy * dy);
-                    out.ex = cx + dy / dd * options.k * (i - (l - 1) / 2);
-                    out.ey = cy - dx / dd * options.k * (i - (l - 1) / 2);
+                if (isNaN(out.x1)) {
+                    out.x1 = sT.x + xR1 * 2;
+                    out.y1 = sT.y + yR1 / 2
+                    out.x2 = sT.x;
+                    out.y2 = out.y1;
+                    out.ex = (out.x1 + out.x2) / 2;
+                    out.ey = out.y1 - (options.kk * (i + 1));
+                } else {
+                    dx = Math.abs((x1 - x2) / 2);
+                    dy = Math.abs((y1 - y2) / 2);
+
+                    if (i !== (l - 1) / 2) {
+                        dd = Math.sqrt(dx * dx + dy * dy);
+                        out.ex = cx + dy / dd * options.k * (i - (l - 1) / 2);
+                        out.ey = cy - dx / dd * options.k * (i - (l - 1) / 2);
+                    }
                 }
 
                 output.push(out);
