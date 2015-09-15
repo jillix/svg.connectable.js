@@ -16,7 +16,7 @@
 # svg.connectable.js
 A JavaScript library for connecting SVG things.
 
-[![svg.connectable.js](http://i.imgur.com/VPZjM3v.png)](http://jillix.github.io/svg.pan-zoom.js/)
+[![svg.connectable.js](http://i.imgur.com/VPZjM3v.png)](http://jillix.github.io/svg.connectable.js)
 
 ## CDN
 The library is available on [CDNJS](https://cdnjs.com/libraries/svg.connectable.js) as well. To use it, just do:
