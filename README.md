@@ -13,16 +13,34 @@
 <!-- * * * Thanks! * * *                                                    -->
 <!---------------------------------------------------------------------------->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # svg.connectable.js
 A JavaScript library for connecting SVG things.
 
+
 [![svg.connectable.js](http://i.imgur.com/VPZjM3v.png)](http://jillix.github.io/svg.connectable.js)
+
 
 ## CDN
 The library is available on [CDNJS](https://cdnjs.com/libraries/svg.connectable.js) as well. To use it, just do:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.connectable.js/2.0.0/svg.connectable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.connectable.js/2.0.1/svg.connectable.min.js"></script>
 ```
 
 ## Usage
@@ -37,7 +55,7 @@ This library depends on:
 <script src="path/to/svg.draggy.js"></script>
 <script src="path/to/svg.connectable.js"></script>
 <!-- Or from CDN
-<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.connectable.js/2.0.0/svg.connectable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.connectable.js/2.0.1/svg.connectable.min.js"></script>
 -->
 <div class="graph"></div>
 <script>
@@ -66,12 +84,31 @@ This library depends on:
 </script>
 ```
 
+This Demo in jsfiddle: https://jsfiddle.net/u8qck0h3/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Documentation
+
+
+
 
 ### `connectable(options, elmTarget)`
 Connects two elements. If called multiple times, the lines will be curved.
 
 #### Params
+
 - **Object** `options`: An object containing the following fields:
  - `container` (SVGElement): The line elements container.
  - `markers` (SVGElement): The marker elements container.
@@ -93,6 +130,7 @@ The function that computes the new coordinates.
 It can be overriden with a custom function.
 
 #### Params
+
 - **Connectable** `con`: The connectable instance.
 
 #### Return
@@ -105,14 +143,21 @@ Updates the line coordinates.
 Sets the line color.
 
 #### Params
+
 - **String** `color`: The new color.
 - **Connectable** `c`: The connectable instance.
+
+
+
+
 
 ## How to contribute
 Have an idea? Found a bug? See [how to contribute][contributing].
 
+
 ## License
 See the [LICENSE](/LICENSE) file.
+
 
 [contributing]: /CONTRIBUTING.md
 [docs]: /DOCUMENTATION.md
