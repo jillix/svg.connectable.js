@@ -23,6 +23,7 @@ var _connections = {}
  *
  *  - `container` (SVGElement): The line elements container.
  *  - `markers` (SVGElement): The marker elements container.
+ *  - `padEllipse` (Boolean): If `true`, the line coordinates will be placed with a padding.
  *
  * @param {SVGElement} elmTarget The target SVG element.
  * @return {Object} The connectable object containing:
@@ -31,7 +32,6 @@ var _connections = {}
  *  - `target` (SVGElement): The target element.
  *  - `line` (SVGElement): The line element.
  *  - `marker` (SVGElement): The marker element.
- *  - `padEllipe` (Boolean): If `true`, the line coordinates will be placed with a padding.
  *  - [`computeLineCoordinates` (Function)](#computelinecoordinatescon)
  *  - [`update` (Function)](#update)
  *  - [`setLineColor` (Function)](#setlinecolorcolor-c)

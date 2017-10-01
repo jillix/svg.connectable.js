@@ -75,6 +75,7 @@ Connects two elements. If called multiple times, the lines will be curved.
 - **Object** `options`: An object containing the following fields:
  - `container` (SVGElement): The line elements container.
  - `markers` (SVGElement): The marker elements container.
+ - `padEllipse` (Boolean): If `true`, the line coordinates will be placed with a padding.
 - **SVGElement** `elmTarget`: The target SVG element.
 
 #### Return
@@ -83,7 +84,6 @@ Connects two elements. If called multiple times, the lines will be curved.
  - `target` (SVGElement): The target element.
  - `line` (SVGElement): The line element.
  - `marker` (SVGElement): The marker element.
- - `padEllipe` (Boolean): If `true`, the line coordinates will be placed with a padding.
  - [`computeLineCoordinates` (Function)](#computelinecoordinatescon)
  - [`update` (Function)](#update)
  - [`setLineColor` (Function)](#setlinecolorcolor-c)
